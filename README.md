@@ -1,18 +1,18 @@
-# Adding members to Telegram Group using Telethon 
- Scraping members from different groups and adding them to our groups in Telegram using Telethon Package
+# Thêm thành viên vào Nhóm Telegram bằng Telethon
+ Gom thành viên từ các nhóm khác nhau và thêm họ vào các nhóm của chúng tôi trong Telegram bằng Gói Telethon
+ 
+ ### Điều kiện tiên quyết : 
 
- ### Prerequisites : 
+ - Python phải được cài đặt trong hệ thống của bạn
+ - Phiên bản 3 trở lên được ưu tiên
+ - Khóa API Telegram phải được tạo bằng liên kết này  https://my.telegram.org/auth?to=apps 
 
- - Python must be installed in your system
- - Version 3 or above is preferred
- - Telegram API keys must be built using this link  https://my.telegram.org/auth?to=apps 
+ ### Chức năng :
 
- ### Functionalities :
+ - Gom thành viên từ các nhóm khác nhau và lưu trữ họ trong tệp CSV
+ - Đọc dữ liệu từ các tệp csv và thêm chúng vào nhóm của chúng tôi bằng phương pháp telethon.
 
- - Scraping members from different groups and storing them in CSV files
- - Read the data from csv files and add them into our groups using  telethon methods.
+ ### Yêu cầu :
 
- ### Requirements :
-
- - All the required packages are put into requirements.txt
- - Use command "pip install -r -U requirements.txt" to install required packages. 
+ - Tất cả các gói được yêu cầu đều được đưa vào tests.txt
+ - Sử dụng lệnh "pip install -r -U sources.txt" để cài đặt các gói cần thiết.
