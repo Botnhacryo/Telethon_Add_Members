@@ -9,15 +9,15 @@ import traceback
 import time
 
 
-api_id = 1234
-api_hash = 'xxxxxxxxx'
-phone = 'xxxxxxxxxx'
+api_id = xxxx
+api_hash = 'xxxx'
+phone = 'xxxx'
 client = TelegramClient(phone, api_id, api_hash)
 
 client.connect()
 if not client.is_user_authorized():
     client.send_code_request(phone)
-    client.sign_in(phone, input('Enter the code: '))
+    client.sign_in(phone, input('Nhập mã: '))
     
 input_file = 'files/bin.csv'
 users = []
@@ -53,27 +53,27 @@ for chat in chats:
     except:
         continue
 
-print('Choose a group to add members:')
+print('Chọn một nhóm để thêm thành viên:')
 i=0
 for group in groups:
     print(str(i) + '- ' + group.title)
     i+=1
 
-g_index = input("Enter a Number: ")
+g_index = input("Nhập một số: ")
 target_group=groups[int(g_index)]
 
 target_group_entity = InputPeerChannel(target_group.id,target_group.access_hash)
 
     
-mode = int(input("Enter 1 to add by username or 2 to add by ID: "))
+mode = int(input("Nhập 1 để thêm theo tên người dùng hoặc 2 để thêm theo ID: "))
 n=0
 for user in users:
     if  n==99 :
-        print("Sleeping for 900 secs")
+        print("Ngủ trong 900 giây")
         time.sleep(900) 
         n=n+1
     try:
-        print ("Adding {}".format(user['id']))
+        print ("Thêm {}".format(user['id']))
         if mode == 1:
             if user['username'] == "":
                 continue
@@ -81,19 +81,19 @@ for user in users:
         elif mode == 2:
             user_to_add = InputPeerUser(user['id'], user['access_hash'])
         else:
-            sys.exit("Invalid Mode Selected. Please Try Again.")
+            sys.exit("Đã chọn chế độ không hợp lệ. Vui lòng thử lại.")
         client(InviteToChannelRequest(target_group_entity,[user_to_add]))
         print("Waiting 700 Seconds...")
         n=n+1
         time.sleep(700)
         
     except PeerFloodError:
-        print("Getting Flood Error from telegram. Script is stopping now. Please try again after some time.")
-        sys.exit("Ending program")
+        print("Nhận lỗi lũ lụt từ điện tín. Tập lệnh hiện đang dừng. Vui lòng thử lại sau một thời gian.")
+        sys.exit("Chương trình kết thúc")
     except UserPrivacyRestrictedError:
-        print("The user's privacy settings do not allow you to do this. Skipping.")
+        print("Cài đặt quyền riêng tư của người dùng không cho phép bạn làm điều này. Bỏ qua.")
         time.sleep(100)
     except:
         traceback.print_exc()
-        print("Unexpected Error")
+        print("Lỗi không mong đợi")
         continue
